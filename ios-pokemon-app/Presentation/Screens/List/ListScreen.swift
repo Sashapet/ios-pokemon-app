@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ListScreen: View {
+  
+  @StateObject private var vm: ListScreenViewModel = ListScreenViewModel()
+  @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+      NavigationView {
+        ScrollView(.vertical) {
+          LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
+            ForEach(vm.pokemonArray) { pokemon in
+              NavigationLink(destination: DetailsScreen(pokemon: pokemon)) {
+                ListItemView(pokemon: pokemon)
+              }
+            }
+          }
+          .padding(10)
         }
-        .padding()
+      }
     }
 }
 

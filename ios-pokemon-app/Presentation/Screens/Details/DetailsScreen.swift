@@ -9,17 +9,17 @@ import SwiftUI
 
 struct DetailsScreen: View {
   // MARK: - PROPERTIES
-
+  let pokemon: Pokemon
 
   // MARK: - BODY
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    Text(pokemon.name)
   }
 }
 
 // MARK: - PREVIEW
 struct DetailsScreen_Previews: PreviewProvider {
   static var previews: some View {
-    DetailsScreen()
+    DetailsScreen(pokemon: Pokemon(id: "1", name: "Pikachu"))
    }
 }
